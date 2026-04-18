@@ -88,11 +88,14 @@ class GameFramework {
   }
 
   loop(timestamp) {
-    const dt = Math.min((timestamp - this.lastTime) / 1000 || 0, this.maxDelta);
+    if (this.lastTime === 0) {
+      this.lastTime = timestamp;
+    }
+    const dt = Math.min((timestamp - this.lastTime) / 1000, this.maxDelta);
     this.lastTime = timestamp;
     this.scene.update(dt);
     this.scene.render(this.ctx);
-    requestAnimationFrame((nextTimestamp) => this.loop(nextTimestamp));
+    requestAnimationFrame((t) => this.loop(t));
   }
 }
 
