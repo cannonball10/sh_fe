@@ -10,4 +10,4 @@ Simple framework for a web-based game.
 
 ## Run locally
 
-Open `/home/runner/work/sh_fe/sh_fe/index.html` in a browser.
+Open `index.html` in a browser.
