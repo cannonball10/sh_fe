@@ -79,7 +79,7 @@ class GameFramework {
     this.ctx = canvas.getContext("2d");
     this.input = new Input();
     this.scene = new BasicScene({ width: canvas.width, height: canvas.height }, this.input);
-    this.lastTime = 0;
+    this.lastTime = null;
     this.maxDelta = 0.05;
   }
 
@@ -88,7 +88,7 @@ class GameFramework {
   }
 
   loop(timestamp) {
-    if (this.lastTime === 0) {
+    if (this.lastTime === null) {
       this.lastTime = timestamp;
     }
     const dt = Math.min((timestamp - this.lastTime) / 1000, this.maxDelta);
