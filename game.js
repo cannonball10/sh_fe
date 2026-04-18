@@ -81,10 +81,11 @@ class GameFramework {
     this.scene = new BasicScene({ width: canvas.width, height: canvas.height }, this.input);
     this.lastTime = null;
     this.maxDelta = 0.05;
+    this.loop = this.loop.bind(this);
   }
 
   start() {
-    requestAnimationFrame((timestamp) => this.loop(timestamp));
+    requestAnimationFrame(this.loop);
   }
 
   loop(timestamp) {
@@ -95,7 +96,7 @@ class GameFramework {
     this.lastTime = timestamp;
     this.scene.update(dt);
     this.scene.render(this.ctx);
-    requestAnimationFrame((t) => this.loop(t));
+    requestAnimationFrame(this.loop);
   }
 }
 
